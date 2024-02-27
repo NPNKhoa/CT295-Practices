@@ -4,7 +4,7 @@
 #define BLUELED 8
 #define REDLED 12
 
-int delayTime = 500;
+int delayTime = 1500;
 int input;
 
 bool isTrue = true;
@@ -31,7 +31,7 @@ void turnOffAllLed() {
 
 void changeSpeed() {
     if (input == 45) {
-      delayTime += 100;
+      delayTime += 50;
     }
 
     if (delayTime == 0) {
@@ -40,12 +40,12 @@ void changeSpeed() {
     }
 
     if (input == 43) {
-      delayTime -= 100;
+      delayTime -= 50;
     }
 }
 
 void mode2() {
-  while(Serial.available() == 0 || (input != 'q' && input != 101))
+  while(Serial.available() == 0 && (input != 'q' && input != 101))
   {
     turnOnAllLed();
     delay(delayTime);
@@ -69,7 +69,7 @@ void mode2() {
 }
 
 void mode3() {
-  while(Serial.available() == 0 || (input != 'q' && input != 101)) {
+  while(Serial.available() == 0 && (input != 'q' && input != 101)) {
     digitalWrite(GREENLED, HIGH);
     delay(delayTime);
     digitalWrite(GREENLED, LOW);
